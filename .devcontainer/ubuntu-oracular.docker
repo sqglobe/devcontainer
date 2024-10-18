@@ -1,0 +1,20 @@
+# base platform
+FROM ubuntu:oracular
+
+# update packages
+RUN apt-get update \
+ && apt-get install -y apt-utils 
+
+# install development utilities
+# compiler and build too
+RUN  apt-get update \
+  && apt-get install -y cmake clang ninja-build
+
+
+# path for source-code  
+RUN mkdir -p /src /build
+
+
+
+
+
