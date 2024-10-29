@@ -1,26 +1,28 @@
 {
-	"name": "CMake-project",
-	"build": {
-		"dockerfile": "ubuntu-oracular.docker",
-	},
-	"remoteUser": "ubuntu",
-	"mounts": [
-        "source=${localWorkspaceFolder}/.devcontainer/build,target=/build,type=bind,consistency=cached",
-    ],
-    "shutdownAction": "stopContainer",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/src,type=bind,consistency=cached",
-    "workspaceFolder": "/src",
-    "customizations": {
-      "vscode": {
-         "extensions": [
-            "ms-vscode.cmake-tools",
-            "ms-vscode.cpptools",
-         ],
-         "settings": {
-           "cmake.buildDirectory": "/build",
-           "cmake.options.statusBarVisibility": "visible",
-           "cmake.sourceDirectory": "${workspaceFolder}",
-         }
+  "name": "CMake-project",
+  "build": {
+    "dockerfile": "ubuntu-oracular.docker"
+  },
+  "remoteUser": "ubuntu",
+  "mounts": [
+  ],
+  "shutdownAction": "stopContainer",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/ws/,type=bind,consistency=cached",
+  "workspaceFolder": "/ws/",
+  "runArgs": [
+    "--user=${localEnv:UID}:${localEnv:GID}"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools"
+      ],
+      "settings": {
+        "cmake.buildDirectory": "${workspaceFolder}/build",
+        "cmake.options.statusBarVisibility": "visible",
+        "cmake.sourceDirectory": "${workspaceFolder}"
       }
     }
+  }
 }
