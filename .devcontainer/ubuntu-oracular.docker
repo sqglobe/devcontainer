@@ -9,12 +9,3 @@ RUN apt-get update \
 # compiler and build too
 RUN  apt-get update \
   && apt-get install -y cmake clang ninja-build
-
-
-# path for source-code  
-RUN mkdir -p /src /build
-
-
-
-
-
